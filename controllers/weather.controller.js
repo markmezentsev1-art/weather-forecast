@@ -1,31 +1,25 @@
+const { getWeatherByCity } = require('../services/weather.service');
+
 exports.renderHome = (req, res) => {
-  res.render('index', {
-    weather: null,
-    error: null,
-  });
+  res.render('index', { weather: null, error: null });
 };
 
-exports.getWeather = (req, res) => {
+exports.getWeather = async (req, res) => {
   const city = req.query.city?.trim();
 
-  let error = null;
   let weather = null;
+  let error = null;
 
-  // server-side validation
   if (!city) {
     error = 'City is required';
   } else if (city.length < 2) {
     error = 'City name must be at least 2 characters';
-  } else if (!/^[a-zA-Z\s-]+$/.test(city)) {
-    error = 'City name can contain only letters';
-  }
+  } else {
+    weather = await getWeatherByCity(city);
 
-  // mock data (API позже)
-  if (!error) {
-    weather = {
-      city,
-      temp: 22,
-    };
+    if (!weather) {
+      error = 'Weather service unavailable or city not found';
+    }
   }
 
   res.render('index', { weather, error });
