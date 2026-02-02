@@ -1,26 +1,25 @@
 {
   "name": "weather-forecast",
   "version": "1.0.0",
-  "description": "Express + EJS weather forecast app",
-  "main": "app.js",
+  "description": "Weather forecast app with Express, EJS and OpenWeather API",
+  "main": "src/app.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
-  "keywords": [
-    "express",
-    "ejs",
-    "weather",
-    "nodejs"
-  ],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "ejs": "^4.0.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "node-fetch": "^3.3.2",
+    "redis": "^5.10.0",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
@@ -29,6 +28,6 @@
     "eslint-plugin-prettier": "^5.5.5",
     "globals": "^17.0.0",
     "nodemon": "^3.1.11",
-    "prettier": "^3.8.0"
+    "prettier": "^3.8.1"
   }
 }
