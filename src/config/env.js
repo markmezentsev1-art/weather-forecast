@@ -1,14 +1,9 @@
 const { z } = require('zod');
 
 const envSchema = z.object({
-  WEATHER_API_KEY: z
-    .string()
-    .min(1, 'WEATHER_API_KEY is required'),
+  WEATHER_API_KEY: z.string().min(1, 'WEATHER_API_KEY is required'),
 
-  PORT: z
-    .string()
-    .optional()
-    .default('3000'),
+  PORT: z.string().optional().default('3000'),
 });
 
 const parsed = envSchema.safeParse(process.env);

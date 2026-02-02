@@ -1,5 +1,12 @@
-const weatherService = require('../services/weather.service');
+const weatherService = require('../services/weatherService');
 
+exports.renderHome = (req, res) => {
+  res.render('index', {
+    weather: null,
+    error: null,
+  });
+};
+            
 exports.getWeather = async (req, res) => {
   const { city } = req.query;
 

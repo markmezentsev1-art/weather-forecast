@@ -1,11 +1,15 @@
 const express = require('express');
+
+const {
+  renderHome,
+  getWeather,
+} = require('../controllers/weather.controller');
+
+
 const router = express.Router();
 
-console.log('✅ weather.routes.js loaded');
+router.get('/', renderHome);
+router.get('/weather', getWeather);
 
-const weatherController = require('../controllers/weather.controller');
-
-router.get('/', weatherController.getWeather);
-router.get('/weather', weatherController.getWeather);
 
 module.exports = router;
